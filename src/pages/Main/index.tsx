@@ -14,7 +14,7 @@ import {
   Input,
   Submit,
   Repository,
-  Link,
+  Navigation,
   Box,
   RepoName,
   Description,
@@ -41,6 +41,7 @@ const Main: React.FC = () => {
 
     try {
       const response = await api.get<Repositories>(`/repos/${newRepo}`);
+
       setRepositories([...repositories, response.data]);
       setNewRepo('');
       setError('');
@@ -70,17 +71,14 @@ const Main: React.FC = () => {
 
       <Repository>
         {repositories.map(item => (
-          <Link
-            key={item.full_name}
-            href={`https://github.com/${item.owner.login}`}
-          >
+          <Navigation key={item.full_name} to={`/repository/${item.full_name}`}>
             <img src={item.owner.avatar_url} alt={item.owner.login} />
             <Box>
               <RepoName>{item.full_name}</RepoName>
               <Description>{item.description}</Description>
             </Box>
             <FiChevronRight size={25} color="#333" />
-          </Link>
+          </Navigation>
         ))}
       </Repository>
     </Container>

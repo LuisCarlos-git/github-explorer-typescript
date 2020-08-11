@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
 import { shade } from 'polished';
+import { Link } from 'react-router-dom';
 
 interface FormErrorInterface {
   hasError: boolean;
@@ -73,7 +74,7 @@ export const Repository = styled.div`
   margin: 80px 0 30px;
   max-width: 700px;
 `;
-export const Link = styled.a`
+export const Navigation = styled(Link)`
   background: #fff;
   border-radius: 5px;
   width: 100%;
@@ -98,7 +99,7 @@ export const Link = styled.a`
   }
 
   &:hover {
-    transform: translate3d(20px, 0, 0);
+    transform: translate3d(10px, 0, 0);
   }
 `;
 export const Box = styled.div`
